@@ -1,0 +1,1361 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://<TOKEN>:@api.80legs.com/v2/apps/sample
+    body:
+      encoding: UTF-8
+      string: |
+        // This 80app returns the header data from each URL crawled
+
+        var EightyApp = function() {
+                this.processDocument = function(html, url, headers, status, jQuery) {
+                        var app = this;
+                        var $ = jQuery;
+                        var $html = app.parseHtml(html, $);
+                        var object = {};
+
+                        if(typeof headers == 'string' || headers instanceof String) {
+                                var headersArray = headers.split("\r\n");
+                                for (var i = 0; i < headersArray.length; i++) {
+                                        var keyvalArray = headersArray[i].split(": ");
+                                        var key = keyvalArray[0];
+                                        var value = keyvalArray[1];
+                                        object[key] = value;
+                                }
+
+                                return JSON.stringify(object);
+                        }
+
+                        return JSON.stringify(headers);
+                }
+
+                this.parseLinks = function(html, url, headers, status, jQuery) {
+                        var app = this;
+                        var $ = jQuery;
+                        var $html = app.parseHtml(html, $);
+                        var links = [];
+
+                        // gets all links in the html document
+                        $html.find('a').each(function(i, obj) {
+                                var link = app.makeLink(url, $(this).attr('href'));
+                                if(link != null) {
+                                        links.push(link);
+                                }
+                        });
+
+                        return links;
+                }
+        }
+
+        try {
+                // Testing
+                module.exports = function(EightyAppBase) {
+                        EightyApp.prototype = new EightyAppBase();
+                        return new EightyApp();
+                }
+        } catch(e) {
+                // Production
+                console.log("Eighty app exists.");
+                EightyApp.prototype = new EightyAppBase();
+        }
+    headers:
+      Content-Type:
+      - application/octet-stream
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:52 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:54 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/apps/sample
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:52 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:55 GMT
+- request:
+    method: put
+    uri: https://<TOKEN>:@api.80legs.com/v2/apps/sample_all
+    body:
+      encoding: UTF-8
+      string: |
+        // This 80app returns the header data from each URL crawled
+
+        var EightyApp = function() {
+                this.processDocument = function(html, url, headers, status, jQuery) {
+                        var app = this;
+                        var $ = jQuery;
+                        var $html = app.parseHtml(html, $);
+                        var object = {};
+
+                        if(typeof headers == 'string' || headers instanceof String) {
+                                var headersArray = headers.split("\r\n");
+                                for (var i = 0; i < headersArray.length; i++) {
+                                        var keyvalArray = headersArray[i].split(": ");
+                                        var key = keyvalArray[0];
+                                        var value = keyvalArray[1];
+                                        object[key] = value;
+                                }
+
+                                return JSON.stringify(object);
+                        }
+
+                        return JSON.stringify(headers);
+                }
+
+                this.parseLinks = function(html, url, headers, status, jQuery) {
+                        var app = this;
+                        var $ = jQuery;
+                        var $html = app.parseHtml(html, $);
+                        var links = [];
+
+                        // gets all links in the html document
+                        $html.find('a').each(function(i, obj) {
+                                var link = app.makeLink(url, $(this).attr('href'));
+                                if(link != null) {
+                                        links.push(link);
+                                }
+                        });
+
+                        return links;
+                }
+        }
+
+        try {
+                // Testing
+                module.exports = function(EightyAppBase) {
+                        EightyApp.prototype = new EightyAppBase();
+                        return new EightyApp();
+                }
+        } catch(e) {
+                // Production
+                console.log("Eighty app exists.");
+                EightyApp.prototype = new EightyAppBase();
+        }
+    headers:
+      Content-Type:
+      - application/octet-stream
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:53 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:55 GMT
+- request:
+    method: get
+    uri: https://<TOKEN>:@api.80legs.com/v2/apps
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:37:53 GMT
+      Server:
+      - Cowboy
+      Content-Length:
+      - '4636'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/TextFromURLListOnly.js","name":"TextFromURLListOnly.js","description":"Returns
+        text from each URL crawled, only on URLs that have the same domain as the
+        current URL being crawled","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-9-23"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/LossyPageContentInternalLinks.js","name":"LossyPageContentInternalLinks.js","description":"Returns
+        the HTML with all style, blocks, script blocks, and HTML tags stripped out.","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/LossyPageContent.js","name":"LossyPageContent.js","description":"Returns
+        the HTML with all style, blocks, script blocks, and HTML tags stripped out.","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/LossyDocumentData.js","name":"LossyDocumentData.js","description":"Returns
+        the following attributes from each URL crawled: title, meta tags, links (everything
+        in an ''a'' tag)","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/LinkTracer.js","name":"LinkTracer.js","description":"Returns
+        a timestamp for when the URL was crawled, the original URL that led to this
+        URL being crawled, and the HTML.","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-8-25"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/LinksAndKeywords.js","name":"LinksAndKeywords.js","description":"Returns
+        all links and keywords, with their counts, found on a page","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-8-26"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/LinkCollector.js","name":"LinkCollector.js","description":"Returns
+        all links found on a page","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/KeywordCount.js","name":"KeywordCount.js","description":"Returns
+        a timestamp for when the URL was crawled, and a list of words on the page
+        with their frequencies.","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/HeaderData.js","name":"HeaderData.js","description":"Returns
+        the header data from each URL crawled","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-9-8"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/FullPageContent.js","name":"FullPageContent.js","description":"Returns
+        full HTML source of each URL crawled.","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/FileFinder.js","name":"FileFinder.js","description":"Returns
+        all links to files (e.g., .docx, .pptx, .pdf, etc.) found on a page","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/ExternalLinkCollector.js","name":"ExternalLinkCollector.js","description":"Returns
+        all links found on a page","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/EmailsAndPageContent.js","name":"EmailsAndPageContent.js","description":"Returns
+        a list of email and full page content","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/EmailCollector.js","name":"EmailCollector.js","description":"Returns
+        a list of emails for every page on the domains of the URL list","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/DocumentData.js","name":"DocumentData.js","description":"Returns
+        title, meta tags, and links attributes from each URL crawled","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/CrawlInternalLinks.js","name":"CrawlInternalLinks.js","description":"Returns
+        URLs that have the same domain as the current URL being crawled.","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/bjadslid9v7uat88n70xjz0omeyun69j/CrawlImages.js","name":"CrawlImages.js","description":"Returns
+        all URLs to and base64-encoded versions of all images found on each URL crawled","user":"bjadslid9v7uat88n70xjz0omeyun69j","date_created":"2014-7-17"},{"location":"80apps/<TOKEN>/sample_all","name":"sample_all","description":"Custom
+        80App","user":"<TOKEN>","date_created":"2014-10-14"}]'
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:55 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/apps/sample_all
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:53 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:55 GMT
+- request:
+    method: put
+    uri: https://<TOKEN>:@api.80legs.com/v2/apps/sample_delete
+    body:
+      encoding: UTF-8
+      string: |
+        // This 80app returns the header data from each URL crawled
+
+        var EightyApp = function() {
+                this.processDocument = function(html, url, headers, status, jQuery) {
+                        var app = this;
+                        var $ = jQuery;
+                        var $html = app.parseHtml(html, $);
+                        var object = {};
+
+                        if(typeof headers == 'string' || headers instanceof String) {
+                                var headersArray = headers.split("\r\n");
+                                for (var i = 0; i < headersArray.length; i++) {
+                                        var keyvalArray = headersArray[i].split(": ");
+                                        var key = keyvalArray[0];
+                                        var value = keyvalArray[1];
+                                        object[key] = value;
+                                }
+
+                                return JSON.stringify(object);
+                        }
+
+                        return JSON.stringify(headers);
+                }
+
+                this.parseLinks = function(html, url, headers, status, jQuery) {
+                        var app = this;
+                        var $ = jQuery;
+                        var $html = app.parseHtml(html, $);
+                        var links = [];
+
+                        // gets all links in the html document
+                        $html.find('a').each(function(i, obj) {
+                                var link = app.makeLink(url, $(this).attr('href'));
+                                if(link != null) {
+                                        links.push(link);
+                                }
+                        });
+
+                        return links;
+                }
+        }
+
+        try {
+                // Testing
+                module.exports = function(EightyAppBase) {
+                        EightyApp.prototype = new EightyAppBase();
+                        return new EightyApp();
+                }
+        } catch(e) {
+                // Production
+                console.log("Eighty app exists.");
+                EightyApp.prototype = new EightyAppBase();
+        }
+    headers:
+      Content-Type:
+      - application/octet-stream
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:53 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:55 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/apps/sample_delete
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:53 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:56 GMT
+- request:
+    method: put
+    uri: https://<TOKEN>:@api.80legs.com/v2/apps/sample_find
+    body:
+      encoding: UTF-8
+      string: |
+        // This 80app returns the header data from each URL crawled
+
+        var EightyApp = function() {
+                this.processDocument = function(html, url, headers, status, jQuery) {
+                        var app = this;
+                        var $ = jQuery;
+                        var $html = app.parseHtml(html, $);
+                        var object = {};
+
+                        if(typeof headers == 'string' || headers instanceof String) {
+                                var headersArray = headers.split("\r\n");
+                                for (var i = 0; i < headersArray.length; i++) {
+                                        var keyvalArray = headersArray[i].split(": ");
+                                        var key = keyvalArray[0];
+                                        var value = keyvalArray[1];
+                                        object[key] = value;
+                                }
+
+                                return JSON.stringify(object);
+                        }
+
+                        return JSON.stringify(headers);
+                }
+
+                this.parseLinks = function(html, url, headers, status, jQuery) {
+                        var app = this;
+                        var $ = jQuery;
+                        var $html = app.parseHtml(html, $);
+                        var links = [];
+
+                        // gets all links in the html document
+                        $html.find('a').each(function(i, obj) {
+                                var link = app.makeLink(url, $(this).attr('href'));
+                                if(link != null) {
+                                        links.push(link);
+                                }
+                        });
+
+                        return links;
+                }
+        }
+
+        try {
+                // Testing
+                module.exports = function(EightyAppBase) {
+                        EightyApp.prototype = new EightyAppBase();
+                        return new EightyApp();
+                }
+        } catch(e) {
+                // Production
+                console.log("Eighty app exists.");
+                EightyApp.prototype = new EightyAppBase();
+        }
+    headers:
+      Content-Type:
+      - application/octet-stream
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:54 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:56 GMT
+- request:
+    method: get
+    uri: https://<TOKEN>:@api.80legs.com/v2/apps/sample_find
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:54 GMT
+      Server:
+      - Cowboy
+      Content-Length:
+      - '1852'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        // This 80app returns the header data from each URL crawled
+
+        var EightyApp = function() {
+                this.processDocument = function(html, url, headers, status, jQuery) {
+                        var app = this;
+                        var $ = jQuery;
+                        var $html = app.parseHtml(html, $);
+                        var object = {};
+
+                        if(typeof headers == 'string' || headers instanceof String) {
+                                var headersArray = headers.split("\r\n");
+                                for (var i = 0; i < headersArray.length; i++) {
+                                        var keyvalArray = headersArray[i].split(": ");
+                                        var key = keyvalArray[0];
+                                        var value = keyvalArray[1];
+                                        object[key] = value;
+                                }
+
+                                return JSON.stringify(object);
+                        }
+
+                        return JSON.stringify(headers);
+                }
+
+                this.parseLinks = function(html, url, headers, status, jQuery) {
+                        var app = this;
+                        var $ = jQuery;
+                        var $html = app.parseHtml(html, $);
+                        var links = [];
+
+                        // gets all links in the html document
+                        $html.find('a').each(function(i, obj) {
+                                var link = app.makeLink(url, $(this).attr('href'));
+                                if(link != null) {
+                                        links.push(link);
+                                }
+                        });
+
+                        return links;
+                }
+        }
+
+        try {
+                // Testing
+                module.exports = function(EightyAppBase) {
+                        EightyApp.prototype = new EightyAppBase();
+                        return new EightyApp();
+                }
+        } catch(e) {
+                // Production
+                console.log("Eighty app exists.");
+                EightyApp.prototype = new EightyAppBase();
+        }
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:56 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/apps/sample_find
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:54 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:56 GMT
+- request:
+    method: get
+    uri: https://<TOKEN>:@api.80legs.com/v2/users/<TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:37:54 GMT
+      Server:
+      - Cowboy
+      Content-Length:
+      - '294'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"token":"<TOKEN>","organization":"Civvic","email":"mattsolt@gmail.com","first_name":"Matt","last_name":"Solt","phone_number":"undefined","stripe_customer_id":"cus_4lcSWy6GfXcdmE","plan_id":"plus","type":"user","active":1,"urls_crawled":0,"date_registered":"2014-4-22"}'
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:56 GMT
+- request:
+    method: post
+    uri: https://<TOKEN>:@api.80legs.com/v2/crawls/status_crawl
+    body:
+      encoding: UTF-8
+      string: '{"app":"HeaderData.js","urllist":"1","max_depth":2,"max_urls":1000}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:37:54 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:57 GMT
+- request:
+    method: get
+    uri: https://<TOKEN>:@api.80legs.com/v2/crawls/status_crawl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:37:55 GMT
+      Server:
+      - Cowboy
+      Content-Length:
+      - '277'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":57303,"name":"status_crawl","user":"<TOKEN>","user_agent":"voltron","app":"HeaderData.js","urllist":"1","data":"","max_depth":2,"max_urls":1000,"status":"QUEUED","depth":0,"urls_crawled":0,"date_created":"2014-10-14
+        21:37:55","date_completed":""}'
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:57 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/crawls/status_crawl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:37:55 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:57 GMT
+- request:
+    method: post
+    uri: https://<TOKEN>:@api.80legs.com/v2/crawls/test_crawl
+    body:
+      encoding: UTF-8
+      string: '{"app":"HeaderData.js","urllist":"1","max_depth":2,"max_urls":1000}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:37:55 GMT
+      Server:
+      - Cowboy
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:57 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/crawls/test_crawl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:37:55 GMT
+      Server:
+      - Cowboy
+      Content-Length:
+      - '43'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error":"crawl has already been canceled"}'
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:57 GMT
+- request:
+    method: put
+    uri: https://<TOKEN>:@api.80legs.com/v2/urllists/sample
+    body:
+      encoding: UTF-8
+      string: |
+        [
+          "http://example.com",
+          "https://example.org"
+        ]
+    headers:
+      Content-Type:
+      - application/octet-stream
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:55 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:58 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/urllists/sample
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:56 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:58 GMT
+- request:
+    method: put
+    uri: https://<TOKEN>:@api.80legs.com/v2/urllists/sample_all
+    body:
+      encoding: UTF-8
+      string: |
+        [
+          "http://example.com",
+          "https://example.org"
+        ]
+    headers:
+      Content-Type:
+      - application/octet-stream
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:56 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:58 GMT
+- request:
+    method: get
+    uri: https://<TOKEN>:@api.80legs.com/v2/urllists
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:37:56 GMT
+      Server:
+      - Cowboy
+      Content-Length:
+      - '299'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"location":"urllists/<TOKEN>/sample_all","name":"sample_all","user":"<TOKEN>","date_created":"2014-10-14"},{"location":"urllists/<TOKEN>/1","name":"1","user":"<TOKEN>","date_created":"2014-10-12"}]'
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:58 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/urllists/sample_all
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:56 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:58 GMT
+- request:
+    method: put
+    uri: https://<TOKEN>:@api.80legs.com/v2/urllists/sample_delete
+    body:
+      encoding: UTF-8
+      string: |
+        [
+          "http://example.com",
+          "https://example.org"
+        ]
+    headers:
+      Content-Type:
+      - application/octet-stream
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:56 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:59 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/urllists/sample_delete
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:57 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:59 GMT
+- request:
+    method: put
+    uri: https://<TOKEN>:@api.80legs.com/v2/urllists/sample_find
+    body:
+      encoding: UTF-8
+      string: |
+        [
+          "http://example.com",
+          "https://example.org"
+        ]
+    headers:
+      Content-Type:
+      - application/octet-stream
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:57 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:59 GMT
+- request:
+    method: get
+    uri: https://<TOKEN>:@api.80legs.com/v2/urllists/sample_find
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:57 GMT
+      Server:
+      - Cowboy
+      Content-Length:
+      - '52'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        [
+          "http://example.com",
+          "https://example.org"
+        ]
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:59 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/urllists/sample_find
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Tue, 14 Oct 2014 21:37:57 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:37:59 GMT
+- request:
+    method: post
+    uri: https://<TOKEN>:@api.80legs.com/v2/crawls/start_crawl
+    body:
+      encoding: UTF-8
+      string: '{"app":"HeaderData.js","urllist":"1","max_depth":2,"max_urls":1000}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:39:05 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:39:07 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/crawls/start_crawl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:39:05 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:39:08 GMT
+- request:
+    method: post
+    uri: https://<TOKEN>:@api.80legs.com/v2/crawls/cancel_crawl
+    body:
+      encoding: UTF-8
+      string: '{"app":"HeaderData.js","urllist":"1","max_depth":2,"max_urls":1000}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:39:48 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:39:50 GMT
+- request:
+    method: delete
+    uri: https://<TOKEN>:@api.80legs.com/v2/crawls/cancel_crawl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 14 Oct 2014 21:39:48 GMT
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:39:50 GMT
+recorded_with: VCR 2.9.3
