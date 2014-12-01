@@ -9,6 +9,22 @@ require "active_support/concern"
 require "active_support/core_ext/hash/slice"
 require "ostruct"
 
+require "leggy/helpers"
+require "leggy/user"
+require "leggy/app"
+require "leggy/url"
+require "leggy/crawl_options"
+require "leggy/crawl"
+require "leggy/mapping/user"
+require "leggy/mapping/app"
+require "leggy/mapping/url"
+require "leggy/mapping/crawl_options"
+require "leggy/mapping/crawl"
+require "leggy/resource/user"
+require "leggy/resource/app"
+require "leggy/resource/url"
+require "leggy/resource/crawl"
+
 Dotenv.load
 
 module Leggy
@@ -67,28 +83,6 @@ module Leggy
   def self.setup(options)
     options[:connection] = connection unless options[:connection]
     options
-  end
-
-  autoload :Helpers, 'leggy/helpers'
-  autoload :User, 'leggy/user'
-  autoload :App, 'leggy/app'
-  autoload :Url, 'leggy/url'
-  autoload :CrawlOptions, 'leggy/crawl_options'
-  autoload :Crawl, 'leggy/crawl'
-
-  module Mapping
-    autoload :User, 'leggy/mapping/user'
-    autoload :App, 'leggy/mapping/app'
-    autoload :Url, 'leggy/mapping/url'
-    autoload :CrawlOptions, 'leggy/mapping/crawl_options'
-    autoload :Crawl, 'leggy/mapping/crawl'
-  end
-
-  module Resource
-    autoload :User, 'leggy/resource/user'
-    autoload :App, 'leggy/resource/app'
-    autoload :Url, 'leggy/resource/url'
-    autoload :Crawl, 'leggy/resource/crawl'
   end
 
 end
