@@ -25,8 +25,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock"
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "dotenv"
 
-  spec.add_dependency "dotenv", ">= 0.11", "< 2"
   spec.add_dependency "gem_config", ">= 0.3"
   spec.add_dependency "faraday", "~> 0.9"
   spec.add_dependency "faraday_middleware", "~> 0.9"

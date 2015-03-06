@@ -2,6 +2,9 @@ require "rspec"
 require "webmock/rspec"
 require "vcr"
 require "faraday"
+require "dotenv"
+
+Dotenv.load
 
 begin
   require "pry"

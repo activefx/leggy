@@ -1,5 +1,4 @@
 require "leggy/version"
-require "dotenv"
 require "gem_config"
 require "kartograph"
 require "resource_kit"
@@ -24,8 +23,6 @@ require "leggy/resource/user"
 require "leggy/resource/app"
 require "leggy/resource/url"
 require "leggy/resource/crawl"
-
-Dotenv.load
 
 module Leggy
   include GemConfig::Base
