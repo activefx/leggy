@@ -8,6 +8,8 @@ require 'dotenv'
 
 Dotenv.load
 
+ENV['80_LEGS_API_TOKEN'] ||= 'Fake80LegsToken'
+
 begin
   require 'pry'
 rescue LoadError; end
