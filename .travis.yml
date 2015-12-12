@@ -6,4 +6,4 @@ addons:
   code_climate:
     repo_token: 0ea6fd96ce507aad5efbac5eca10ac0e6cc83bcd75ec8305830b450c68c42714
 env:
-- 80_LEGS_API_TOKEN=Fake_80Legs_Token
+  - 80_LEGS_API_TOKEN="Fake_80Legs_Token"
