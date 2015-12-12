@@ -20,7 +20,7 @@ module Leggy
           verb :put
           path '/v2/apps/:name'
           body { |object| File.file?(object[:body]) ? File.read(object[:body]) : object[:body] }
-          handler(204) { |response| true }
+          handler(204) { true }
         end
 
         # GET https://api_token:@api.80legs.com/v2/apps/{APP_NAME}
@@ -36,7 +36,7 @@ module Leggy
         action :delete do
           verb :delete
           path '/v2/apps/:name'
-          handler(204) { |response| true }
+          handler(204) { true }
         end
 
       end

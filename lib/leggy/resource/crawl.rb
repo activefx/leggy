@@ -19,7 +19,7 @@ module Leggy
           verb :post
           path '/v2/crawls/:name'
           body { |object| object.slice(*Leggy::CrawlOptions.attr_accessors).to_json }
-          handler(204) { |response| true }
+          handler(204) { true }
         end
 
         # GET https://api_token:@api.80legs.com/v2/crawls/{CRAWL_NAME}
@@ -35,7 +35,7 @@ module Leggy
         action :cancel do
           verb :delete
           path '/v2/crawls/:name'
-          handler(204) { |response| true }
+          handler(204) { true }
         end
 
       end
