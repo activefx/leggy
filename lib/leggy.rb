@@ -8,6 +8,8 @@ require "active_support/concern"
 require "active_support/core_ext/hash/slice"
 require "ostruct"
 
+require "leggy/exceptions"
+require "leggy/error_handler"
 require "leggy/helpers"
 require "leggy/user"
 require "leggy/app"
@@ -23,12 +25,13 @@ require "leggy/resource/user"
 require "leggy/resource/app"
 require "leggy/resource/url"
 require "leggy/resource/crawl"
+require "leggy/resource/result"
 
 module Leggy
   include GemConfig::Base
 
   with_configuration do
-    has :api_token,     classes: String,  default: ENV['80_LEGS_API_TOKEN']
+    has :api_token, classes: String, default: ENV['80_LEGS_API_TOKEN']
   end
 
   def self.api_token
@@ -40,7 +43,7 @@ module Leggy
   end
 
   def self.connection
-    @connection ||= Faraday.new(
+    Faraday.new(
       url: 'https://api.80legs.com',
       headers: {
         content_type: 'application/json',
@@ -69,12 +72,18 @@ module Leggy
     Leggy::Resource::Url.new(setup(options))
   end
 
-  # This resource allows for the creation and cancelation of crawls. It also allows
-  # the user to view the crawl status and settings. When the crawl is complete the
-  # links of the results will also be provided within the crawl.
+  # This resource allows for the creation and cancelation of crawls.
+  # It also allows the user to view the crawl status and settings.
   #
   def self.crawls(options = {})
     Leggy::Resource::Crawl.new(setup(options))
+  end
+
+  # This resource allows for viewing a list of the urls containing
+  # the crawl results.
+  #
+  def self.results(options = {})
+    Leggy::Resource::Result.new(setup(options))
   end
 
   def self.setup(options)

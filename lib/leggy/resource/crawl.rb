@@ -1,11 +1,16 @@
 module Leggy
   module Resource
     class Crawl < ResourceKit::Resource
+      include Leggy::ErrorHandler
 
       resources do
 
-        default_handler do |response|
-          raise "ERROR #{response.status}: #{response.body}"
+        # GET https://api_token:@api.80legs.com/v2/crawls
+        #
+        action :all do
+          verb :get
+          path '/v2/crawls'
+          handler(200) { |response| Leggy::Mapping::Crawl.extract_collection(response.body, :read) }
         end
 
         # POST https://api_token:@api.80legs.com/v2/crawls/{CRAWL_NAME}
@@ -31,14 +36,6 @@ module Leggy
           verb :delete
           path '/v2/crawls/:name'
           handler(204) { |response| true }
-        end
-
-        # GET https://api_token:@api.80legs.com/v2/results/{CRAWL_NAME}
-        #
-        action :results do
-          verb :get
-          path '/v2/results/:name'
-          handler(200) { |response| JSON.parse(response.body) }
         end
 
       end

@@ -6,7 +6,7 @@ module Leggy
       kartograph do
         mapping Leggy::Url
 
-        property *Leggy::Url.attr_accessors, scopes: :read
+        property *Leggy::Url.attr_accessors, scopes: [ :read ]
       end
     end
   end

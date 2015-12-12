@@ -2,12 +2,11 @@ module Leggy
   class Url
     include Leggy::Helpers
 
-    attr_accessor(
+    attr_accessor \
       :name,
       :user,
       :location,
       :date_created
-    )
 
   end
 end

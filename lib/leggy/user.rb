@@ -2,7 +2,7 @@ module Leggy
   class User
     include Leggy::Helpers
 
-    attr_accessor(
+    attr_accessor \
       :token,
       :organization,
       :email,
@@ -13,7 +13,6 @@ module Leggy
       :active,
       :urls_crawled,
       :date_registered
-    )
 
   end
 end

@@ -6,7 +6,7 @@ module Leggy
       kartograph do
         mapping Leggy::CrawlOptions
 
-        property *Leggy::CrawlOptions.attr_accessors, scopes: :create
+        property *Leggy::CrawlOptions.attr_accessors, scopes: [ :create ]
       end
     end
   end

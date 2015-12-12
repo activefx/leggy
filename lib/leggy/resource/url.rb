@@ -1,12 +1,9 @@
 module Leggy
   module Resource
     class Url < ResourceKit::Resource
+      include Leggy::ErrorHandler
 
       resources do
-
-        default_handler do |response|
-          raise "ERROR #{response.status}: #{response.body}"
-        end
 
         # GET https://api_token:@api.80legs.com/v2/urllists
         #

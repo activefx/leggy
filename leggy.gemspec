@@ -27,11 +27,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "dotenv"
 
-  spec.add_dependency "gem_config", ">= 0.3"
+  spec.add_dependency "gem_config", "~> 0.3"
   spec.add_dependency "faraday", "~> 0.9"
   spec.add_dependency "faraday_middleware", "~> 0.9"
   spec.add_dependency "resource_kit", "~> 0.1"
-  spec.add_dependency "kartograph", ">= 0.0.8"
+  spec.add_dependency "kartograph", "~> 0.2"
   spec.add_dependency "activesupport", "~> 4.0"
 
 end

@@ -2,7 +2,7 @@ module Leggy
   class Crawl
     include Leggy::Helpers
 
-    attr_accessor(
+    attr_accessor \
       :name,
       :app,
       :user,
@@ -16,7 +16,6 @@ module Leggy
       :maxUrls,
       :status,
       :results
-    )
 
   end
 end

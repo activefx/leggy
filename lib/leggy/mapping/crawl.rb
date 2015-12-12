@@ -6,7 +6,7 @@ module Leggy
       kartograph do
         mapping Leggy::Crawl
 
-        property *Leggy::Crawl.attr_accessors, scopes: :read
+        property *Leggy::Crawl.attr_accessors, scopes: [ :read ]
       end
     end
   end

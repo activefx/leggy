@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<TOKEN>:@api.80legs.com/v2/users/<TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 12 Dec 2015 06:03:33 GMT
+      Server:
+      - Cowboy
+      Content-Length:
+      - '328'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"groups":"undefined","token":"<TOKEN>","organization":"Civvic","email":"mattsolt@gmail.com","first_name":"Matt","last_name":"Solt","phone_number":"undefined","stripe_customer_id":"cus_4lcSWy6GfXcdmE","plan_id":"basic","type":"user","active":1,"urls_crawled":0,"date_registered":"2014-4-22","groups":[]}'
+    http_version: 
+  recorded_at: Sat, 12 Dec 2015 06:03:37 GMT
+recorded_with: VCR 3.0.0

@@ -6,7 +6,7 @@ module Leggy
       kartograph do
         mapping Leggy::User
 
-        property *Leggy::User.attr_accessors, scopes: :read
+        property *Leggy::User.attr_accessors, scopes: [ :read ]
       end
 
     end
