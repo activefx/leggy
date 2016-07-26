@@ -1,6 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe Leggy::Resource::Url, vcr: { cassette_name: 'leggy_url', record: :none } do
+RSpec.describe Leggy::Resource::Url,
+    vcr: { cassette_name: 'leggy_url', record: :none, match_requests_on: [ :method, :host, :path ] } \
+  do
 
   it "includes Leggy::ErrorHandler" do
     expect(described_class.ancestors).to include Leggy::ErrorHandler

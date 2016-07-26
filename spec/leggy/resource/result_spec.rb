@@ -19,7 +19,7 @@ RSpec.describe Leggy::Resource::Result do
     # If rerunning this test without a cassette, it needs to be run in stages
     # to allow for the crawl to finish and generate results
     #
-    context ".all", vcr: { cassette_name: 'leggy_result', record: :none } do
+    context ".all", vcr: { cassette_name: 'leggy_result', record: :none, match_requests_on: [ :method, :host, :path ] } do
 
       before do
         options.merge!(name: 'testing_crawl_results', urllist: 'sample_crawl_list')

@@ -16,7 +16,7 @@ RSpec.describe Leggy::Resource::Crawl do
       }
     end
 
-    context ".all", vcr: { cassette_name: 'leggy_crawl_all', record: :none } do
+    context ".all", vcr: { cassette_name: 'leggy_crawl_all', record: :none, match_requests_on: [ :method, :host, :path ] } do
 
       it "returns a list of all crawls" do
         crawls = Leggy.crawls.all
@@ -25,7 +25,7 @@ RSpec.describe Leggy::Resource::Crawl do
 
     end
 
-    context ".start", vcr: { cassette_name: 'leggy_crawl_start', record: :none } do
+    context ".start", vcr: { cassette_name: 'leggy_crawl_start', record: :none, match_requests_on: [ :method, :host, :path ] } do
 
       before do
         options.merge!(name: 'testing_crawl_start', urllist: 'sample_crawl_list')
@@ -44,7 +44,7 @@ RSpec.describe Leggy::Resource::Crawl do
 
     end
 
-    context ".status", vcr: { cassette_name: 'leggy_crawl_status', record: :none } do
+    context ".status", vcr: { cassette_name: 'leggy_crawl_status', record: :none, match_requests_on: [ :method, :host, :path ] } do
 
       before do
         options.merge!(name: 'testing_crawl_status', urllist: 'sample_crawl_list')
@@ -64,7 +64,7 @@ RSpec.describe Leggy::Resource::Crawl do
 
     end
 
-    context ".cancel", vcr: { cassette_name: 'leggy_crawl_cancel', record: :none } do
+    context ".cancel", vcr: { cassette_name: 'leggy_crawl_cancel', record: :none, match_requests_on: [ :method, :host, :path ] } do
 
       before do
         options.merge!(name: 'testing_crawl_cancel', urllist: 'sample_crawl_list')

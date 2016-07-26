@@ -1,6 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe Leggy::Exception, vcr: { cassette_name: 'leggy_exception', record: :none } do
+RSpec.describe Leggy::Exception,
+    vcr: { cassette_name: 'leggy_exception', record: :none, match_requests_on: [ :method, :host, :path ] } \
+  do
 
   context ".errors" do
 
